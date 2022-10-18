@@ -1,0 +1,12 @@
+{% if team %}
+    <p>This is the team page for {{team.team_name}}.</p>
+    {% if player_list %}
+        <ul>
+            {% for player in player_list %}
+                <li><a href="/ProTracker/player/{{ player.player_ign }}">{{player.player_ign}}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% else %}
+    <p>No team is available.</p>
+{% endif %}

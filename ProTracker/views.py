@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Team, Player
+from .RiotWatcher import get_info
 
 # Create your views here.
 def index(request):
     # return HttpResponse("Hello, world. You're at the ProTracker index.")
     team_list = Team.objects.order_by('team_code')
-    context = {'team_list': team_list}
+    my_info = get_info
+    context = {'team_list': team_list, 'my_info' : my_info}
     return render(request, 'ProTracker/index.html', context)
 
 def team(request, team_code):

@@ -8,7 +8,6 @@ class Team(models.Model):
         return self.team_name
 
 class Player(models.Model):
-    player_id = models.CharField(max_length = 6)
     player_ign = models.CharField(max_length = 30)
     player_name = models.CharField(max_length = 50)
     team = models.ForeignKey(Team, on_delete = models.CASCADE)
@@ -17,6 +16,7 @@ class Player(models.Model):
 
 class PlayerAccount(models.Model):
     account_id = models.CharField(max_length = 78)
+    account_name = models.CharField(max_length = 16)
     player = models.ForeignKey(Player, on_delete = models.CASCADE)
 
 class MatchInfo(models.Model):

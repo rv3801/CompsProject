@@ -17,7 +17,10 @@ class Player(models.Model):
 class PlayerAccount(models.Model):
     account_id = models.CharField(max_length = 78)
     account_name = models.CharField(max_length = 16)
+    account_region = models.CharField(max_length = 4)
     player = models.ForeignKey(Player, on_delete = models.CASCADE)
+    def __str__(self):
+        return self.account_name + " (" + self.account_region + ")"
 
 class MatchInfo(models.Model):
     match_id = models.CharField(max_length = 14)

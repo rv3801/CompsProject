@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Team, Player
 from .RiotWatcher import get_info
+from .models import *
 
 # Create your views here.
 def index(request):
@@ -19,5 +19,8 @@ def team(request, team_code):
 
 def player(request, player_ign):
     player = Player.objects.get(player_ign = player_ign)
-    response = "You are looking at the player page for %s."
-    return HttpResponse(response % player)
+    # response = "You are looking at the player page for %s."
+    # return HttpResponse(response % player)
+    player_accts_list = PlayerAccount.objects.filter(player = player)
+    context = {'player' : player, 'player_accts_list' : player_accts_list}
+    return render(request, 'ProTracker/player.html', context)

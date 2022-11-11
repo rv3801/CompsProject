@@ -1,0 +1,12 @@
+{% if player %}
+    <p>This is the player page for {{ player.player_ign }} ({{ player.player_name }}), player for {{ player.team }}.</p>
+    {% if player_accts_list %}
+    <ul>
+        {% for acct in player_accts_list%}
+            <li>({{ acct.account_region }}) {{ acct.account_name }}</li>
+        {% endfor %}
+    {% endif %}
+    </ul>
+{% else %}
+    <p>This player does not exist.</p>
+{% endif %}

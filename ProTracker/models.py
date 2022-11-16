@@ -25,6 +25,7 @@ class PlayerAccount(models.Model):
 class MatchInfo(models.Model):
     match_id = models.CharField(max_length = 14)
     match_region = models.CharField(max_length = 4, null = True)
+    match_patch = models.CharField(max_length = 15, null = True)
     match_start_time = models.PositiveBigIntegerField(null = True)
     match_duration = models.PositiveSmallIntegerField(null = True)
 

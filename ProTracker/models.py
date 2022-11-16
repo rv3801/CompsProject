@@ -24,4 +24,29 @@ class PlayerAccount(models.Model):
 
 class MatchInfo(models.Model):
     match_id = models.CharField(max_length = 14)
+    match_region = models.CharField(max_length = 4, null = True)
+    match_start_time = models.PositiveBigIntegerField(null = True)
+    match_duration = models.PositiveSmallIntegerField(null = True)
+
+class MatchParticipants(models.Model):
+    match_id = models.ForeignKey(MatchInfo, on_delete = models.CASCADE)
     player = models.ForeignKey(Player, on_delete = models.CASCADE)
+    champ_id = models.PositiveSmallIntegerField()
+    # Primary Runes
+    primary_rune = models.PositiveSmallIntegerField()
+    primary_rune_slot_1 = models.PositiveSmallIntegerField()
+    primary_rune_slot_2 = models.PositiveSmallIntegerField()
+    primary_rune_slot_3 = models.PositiveSmallIntegerField()
+    # Secondary Runes
+    secondary_rune = models.PositiveSmallIntegerField()
+    secondary_rune_slot_1 = models.PositiveSmallIntegerField()
+    secondary_rune_slot_2 = models.PositiveSmallIntegerField()
+    secondary_rune_slot_3 = models.PositiveSmallIntegerField()
+    # Summoner Spells
+    summoner_spell_1 = models.PositiveSmallIntegerField()
+    summoner_spell_2 = models.PositiveSmallIntegerField()
+
+class MatchParticipantItems(models.Model):
+    match_id = models.ForeignKey(MatchInfo, on_delete = models.CASCADE)
+    player = models.ForeignKey(Player, on_delete = models.CASCADE)
+    item_id = models.PositiveSmallIntegerField()
